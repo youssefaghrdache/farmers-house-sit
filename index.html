@@ -192,7 +192,7 @@
 
   /* ---------- JOURNEY (signature element) ---------- */
   .journey{
-    background:var(--sage-deep) url('images/waterfall.jpg') center/cover no-repeat;
+    background:var(--sage-deep) url('waterfall.jpg') center/cover no-repeat;
     color:var(--linen);
     padding:90px 0 100px;position:relative;
   }
@@ -207,6 +207,29 @@
     margin:14px 0 56px;max-width:600px;
   }
   .journey-map{width:100%;height:auto;display:block;}
+  .journey-list{display:none;}
+  @media(max-width:680px){
+    .journey-map{display:none;}
+    .journey-list{
+      display:flex;flex-direction:column;gap:0;
+      border-left:2px dashed rgba(243,234,216,.35);
+      margin-left:8px;
+    }
+    .journey-stop{
+      position:relative;padding:0 0 32px 26px;
+    }
+    .journey-stop:last-child{padding-bottom:0;}
+    .journey-stop::before{
+      content:"";position:absolute;left:-7px;top:2px;
+      width:12px;height:12px;border-radius:50%;
+      background:var(--gold-soft);
+    }
+    .journey-stop .stop-name{
+      font-family:var(--mono);font-size:13px;letter-spacing:.08em;
+      text-transform:uppercase;color:var(--gold-soft);margin-bottom:4px;
+    }
+    .journey-stop .stop-desc{font-size:14.5px;color:var(--linen-dim);}
+  }
   .journey-caption{
     margin-top:40px;font-size:14.5px;color:var(--linen-dim);
     max-width:520px;font-family:var(--sans);font-weight:300;
@@ -400,7 +423,7 @@
 <section class="story reveal" id="story">
   <div class="wrap story-grid">
     <div class="story-lead">
-      <img class="story-photo" src="images/tea-pour.jpg" alt="Pouring mint tea at The Farmer's House">
+      <img class="story-photo" src="tea-pour.jpg" alt="Pouring mint tea at The Farmer's House">
       <div class="eyebrow">Who we are</div>
       <h2>This isn't a restaurant we built. It's a table we already had.</h2>
     </div>
@@ -447,6 +470,25 @@
       </g>
     </svg>
 
+    <div class="journey-list">
+      <div class="journey-stop">
+        <div class="stop-name">The Road</div>
+        <div class="stop-desc">Where we meet you</div>
+      </div>
+      <div class="journey-stop">
+        <div class="stop-name">The Falls</div>
+        <div class="stop-desc">A swim, if you like</div>
+      </div>
+      <div class="journey-stop">
+        <div class="stop-name">The Farm</div>
+        <div class="stop-desc">Lunch, at last</div>
+      </div>
+      <div class="journey-stop">
+        <div class="stop-name">The Dunes</div>
+        <div class="stop-desc">Sea in the distance</div>
+      </div>
+    </div>
+
     <p class="journey-caption">The road can be rough after rain, so we always plan the route with you over WhatsApp first. Most guests walk in from where the car stops, past the falls, then to the farmhouse — about 15 minutes at an easy pace.</p>
   </div>
 </section>
@@ -458,7 +500,7 @@
         <div class="eyebrow">What's cooking</div>
         <h2>One table, one menu — whatever my mother picked up that morning.</h2>
       </div>
-      <img class="table-photo" src="images/couscous.jpg" alt="Couscous with vegetables and chicken, served family-style at The Farmer's House">
+      <img class="table-photo" src="couscous.jpg" alt="Couscous with vegetables and chicken, served family-style at The Farmer's House">
     </div>
     <div class="courses">
       <div class="course">
@@ -551,7 +593,8 @@
         <div class="form-row form-row-split">
           <div>
             <label for="f-date">Date</label>
-            <input id="f-date" name="date" type="date" required>
+            <input id="f-date" name="date" type="date" required min="">
+            <script>document.getElementById('f-date').min = new Date().toISOString().split('T')[0];</script>
           </div>
           <div>
             <label for="f-guests">Guests</label>
@@ -593,9 +636,9 @@
   // and they'll all rotate automatically, no other change needed.
   // ============================================================
   const heroImages = [
-    'images/hero-palm.jpg',
-    'images/dining-room.jpg',
-    'images/table-spread.jpg'
+    'hero-palm.jpg',
+    'dining-room.jpg',
+    'table-spread.jpg'
   ];
 
   const heroBg = document.getElementById('heroBg');
