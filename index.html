@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Farmer's House — A Farm Table Above the Waterfall, Essaouira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --walnut: #2b1f17;
+    --walnut-deep: #1c1410;
+    --gold: #c89b3c;
+    --gold-soft: #e3c583;
+    --sage: #6f7a52;
+    --sage-deep: #4d5638;
+    --linen: #f3ead8;
+    --linen-dim: #e9dcc0;
+    --rust: #a1512e;
+    --ink: #241a12;
+    --serif: 'Fraunces', serif;
+    --sans: 'Work Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  section[id]{scroll-margin-top:76px;}
+  body{
+    background:var(--linen);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold-soft);color:var(--walnut-deep);}
+
+  a{color:inherit;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--sage-deep);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(243,234,216,.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(43,31,23,.1);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-top:16px;padding-bottom:16px;
+  }
+  .brand{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:.01em;
+    display:flex;align-items:center;gap:9px;
+  }
+  .brand svg{width:22px;height:22px;flex-shrink:0;}
+  .nav-links{display:flex;gap:28px;font-size:14px;}
+  .nav-links a{text-decoration:none;opacity:.75;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--sage-deep);color:var(--linen);
+    padding:9px 18px;border-radius:3px;
+    font-size:13.5px;text-decoration:none;
+    display:flex;align-items:center;gap:7px;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--rust);}
+  @media(max-width:720px){.nav-links{display:none;}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--walnut);
+    color:var(--linen);
+    overflow:hidden;
+    min-height:620px;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+  }
+  .hero-bg-layer{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center 30%;background-repeat:no-repeat;
+    opacity:0;transition:opacity 1.6s ease-in-out;
+  }
+  .hero-bg-layer.active{opacity:1;}
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(28,20,16,.55) 0%, rgba(28,20,16,.35) 45%, rgba(28,20,16,.75) 78%, var(--walnut-deep) 100%);
+    z-index:1;
+  }
+  .hero-inner{
+    position:relative;z-index:2;
+    padding:96px 28px 0;
+    max-width:1080px;margin:0 auto;
+  }
+  .hero .eyebrow{color:var(--gold-soft);margin-bottom:22px;}
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(32px,5vw,60px);
+    line-height:1.08;
+    max-width:760px;
+    letter-spacing:-.01em;
+  }
+  .hero h1 em{
+    font-style:normal;
+    font-weight:600;
+    color:var(--gold-soft);
+  }
+  .hero p.lede{
+    margin-top:26px;
+    font-size:clamp(16px,1.7vw,19px);
+    max-width:480px;
+    color:var(--linen-dim);
+    font-weight:300;
+  }
+  .hero-actions{
+    margin-top:38px;
+    display:flex;gap:14px;flex-wrap:wrap;
+    padding-bottom:60px;
+  }
+  .btn-primary{
+    background:var(--gold);color:var(--walnut-deep);
+    padding:14px 26px;border-radius:3px;
+    text-decoration:none;font-size:14.5px;font-weight:500;
+    display:inline-flex;align-items:center;gap:9px;
+    transition:transform .2s, background .2s;
+  }
+  .btn-primary:hover{background:var(--gold-soft);transform:translateY(-1px);}
+  .btn-ghost{
+    border:1px solid rgba(243,234,216,.35);
+    padding:14px 26px;border-radius:3px;
+    text-decoration:none;font-size:14.5px;color:var(--linen);
+    transition:border-color .2s, background .2s;
+  }
+  .btn-ghost:hover{border-color:var(--linen);background:rgba(243,234,216,.06);}
+
+  .hero-scene{width:100%;display:block;position:relative;z-index:1;}
+  .hero-stat-row{
+    position:relative;z-index:2;
+    border-top:1px solid rgba(243,234,216,.15);
+    max-width:1080px;margin:0 auto;
+    padding:22px 28px;
+    display:flex;gap:40px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:13px;color:var(--linen-dim);
+  }
+  .hero-stat-row b{color:var(--gold-soft);font-weight:500;}
+
+  /* ---------- STORY ---------- */
+  .story{padding:96px 0 80px;}
+  .story-grid{
+    display:grid;grid-template-columns:1fr 1.3fr;gap:64px;align-items:start;
+  }
+  .story h2{
+    font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.4vw,40px);
+    line-height:1.15;margin-top:14px;
+  }
+  .story-lead{grid-column:1;}
+  .story-body{grid-column:2;font-size:16.5px;color:#3a2c1e;}
+  .story-body p{margin-bottom:18px;}
+  .story-body p:last-child{margin-bottom:0;}
+  .signature-line{
+    color:var(--sage-deep);font-weight:500;font-family:var(--serif);
+    font-style:italic;font-size:19px;
+  }
+  .story-photo{
+    width:100%;border-radius:3px;margin-bottom:26px;
+    box-shadow:0 18px 40px -14px rgba(43,31,23,.35);
+    object-fit:cover;aspect-ratio:4/5;
+  }
+  @media(max-width:800px){
+    .story-grid{grid-template-columns:1fr;gap:24px;}
+    .story-body{grid-column:1;}
+    .story-photo{aspect-ratio:16/9;}
+  }
+
+  /* ---------- JOURNEY (signature element) ---------- */
+  .journey{
+    background:var(--sage-deep) url('images/waterfall.jpg') center/cover no-repeat;
+    color:var(--linen);
+    padding:90px 0 100px;position:relative;
+  }
+  .journey::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(26,32,17,.82) 0%, rgba(26,32,17,.9) 100%);
+  }
+  .journey .wrap{position:relative;z-index:1;}
+  .journey .eyebrow{color:var(--gold-soft);}
+  .journey h2{
+    font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.4vw,38px);
+    margin:14px 0 56px;max-width:600px;
+  }
+  .journey-map{width:100%;height:auto;display:block;}
+  .journey-caption{
+    margin-top:40px;font-size:14.5px;color:var(--linen-dim);
+    max-width:520px;font-family:var(--sans);font-weight:300;
+  }
+
+  /* ---------- TABLE / MENU ---------- */
+  .table-section{padding:96px 0 90px;}
+  .table-head{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;
+    align-items:end;margin-bottom:56px;
+  }
+  .table-head-text{max-width:520px;}
+  .table-head h2{
+    font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.4vw,40px);
+    margin-top:14px;
+  }
+  .table-photo{
+    width:100%;border-radius:3px;aspect-ratio:5/4;object-fit:cover;
+    box-shadow:0 18px 40px -14px rgba(43,31,23,.35);
+  }
+  @media(max-width:800px){
+    .table-head{grid-template-columns:1fr;}
+  }
+  .courses{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:1px;background:rgba(43,31,23,.15);
+    border:1px solid rgba(43,31,23,.15);
+  }
+  .course{
+    background:var(--linen);padding:32px 26px;
+  }
+  .course .num{
+    font-family:var(--mono);font-size:12px;color:var(--rust);
+    letter-spacing:.1em;
+  }
+  .course h3{
+    font-family:var(--serif);font-weight:600;font-size:20px;
+    margin:12px 0 10px;
+  }
+  .course p{font-size:14.5px;color:#5a4a38;}
+  .table-note{
+    margin-top:36px;font-size:14px;color:#5a4a38;
+    border-left:2px solid var(--gold);padding-left:16px;
+    max-width:600px;
+  }
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{
+    background:var(--walnut-deep);color:var(--linen);
+    padding:90px 0;
+  }
+  .reviews .eyebrow{color:var(--gold-soft);}
+  .reviews-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    flex-wrap:wrap;gap:20px;margin-bottom:50px;
+  }
+  .reviews-head h2{
+    font-family:var(--serif);font-weight:500;font-size:clamp(26px,3vw,36px);
+    margin-top:14px;
+  }
+  .rating-badge{
+    text-align:right;font-family:var(--mono);color:var(--gold-soft);
+  }
+  .rating-badge .big{font-size:34px;font-family:var(--serif);color:var(--linen);}
+  .review-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:1px;background:rgba(243,234,216,.12);
+  }
+  .review-card{
+    background:var(--walnut-deep);padding:28px 24px;
+    border-top:1px solid rgba(243,234,216,.12);
+  }
+  .review-card p{font-size:14.5px;color:var(--linen-dim);font-weight:300;}
+  .review-card .who{
+    margin-top:16px;font-family:var(--mono);font-size:12px;color:var(--gold-soft);
+  }
+
+  /* ---------- VISIT / CONTACT ---------- */
+  .visit{padding:96px 0 100px;}
+  .visit-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;
+  }
+  .visit h2{
+    font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.4vw,40px);
+    margin-top:14px;
+  }
+  .visit-details{margin-top:28px;}
+  .visit-row{
+    display:flex;gap:18px;padding:16px 0;
+    border-top:1px solid rgba(43,31,23,.12);
+  }
+  .visit-row:last-child{border-bottom:1px solid rgba(43,31,23,.12);}
+  .visit-row .label{
+    font-family:var(--mono);font-size:12px;color:var(--rust);
+    text-transform:uppercase;letter-spacing:.08em;
+    width:110px;flex-shrink:0;padding-top:2px;
+  }
+  .visit-row .value{font-size:15.5px;}
+  .visit-row .value a{color:var(--sage-deep);text-decoration:underline;text-decoration-color:rgba(111,122,82,.35);}
+  .map-frame{
+    width:100%;aspect-ratio:1/1;border:0;border-radius:4px;
+    filter:sepia(8%) saturate(85%);
+  }
+
+  .reserve-form{margin-top:34px;max-width:440px;}
+  .form-row{margin-bottom:16px;}
+  .form-row-split{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .reserve-form label{
+    display:block;font-family:var(--mono);font-size:11.5px;
+    text-transform:uppercase;letter-spacing:.07em;color:var(--sage-deep);
+    margin-bottom:6px;
+  }
+  .reserve-form input, .reserve-form textarea{
+    width:100%;padding:11px 12px;border:1px solid rgba(43,31,23,.25);
+    border-radius:3px;background:#fff;font-family:var(--sans);font-size:14.5px;
+    color:var(--ink);
+  }
+  .reserve-form input:focus, .reserve-form textarea:focus{
+    outline:none;border-color:var(--sage-deep);
+  }
+  .reserve-form textarea{resize:vertical;}
+  .form-status{
+    margin-top:12px;font-size:13.5px;min-height:18px;
+  }
+  .form-status.ok{color:var(--sage-deep);}
+  .form-status.err{color:var(--rust);}
+  @media(max-width:800px){
+    .visit-grid{grid-template-columns:1fr;gap:32px;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--walnut);color:var(--linen-dim);
+    padding:44px 0;font-size:13.5px;
+  }
+  footer .wrap{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+    align-items:center;
+  }
+  footer a{color:var(--gold-soft);text-decoration:none;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 21V11L12 4L20 11V21H14V15H10V21H4Z" stroke="#c89b3c" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      The Farmer's House
+    </div>
+    <div class="nav-links">
+      <a href="#story">Our Story</a>
+      <a href="#journey">The Walk</a>
+      <a href="#table">The Table</a>
+      <a href="#reserve">Reserve</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a href="https://www.instagram.com/the_farmers_housse" target="_blank" rel="noopener" aria-label="Instagram" style="opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="#2b1f17" stroke-width="1.6"/><circle cx="12" cy="12" r="4.3" stroke="#2b1f17" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="#2b1f17"/></svg>
+      </a>
+      <a class="nav-cta" href="#reserve">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z"/></svg>
+        Reserve
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">A working farm · Essaouira countryside</div>
+    <h1>Lunch is served after you've<br>walked to <em>the waterfall.</em></h1>
+    <p class="lede">A family table on our farm above Essaouira — my mother cooks, my father tends the land, and I'll walk you down to the falls before we eat.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://wa.me/212656207161" target="_blank" rel="noopener">Message us on WhatsApp →</a>
+      <a class="btn-ghost" href="#table">See the table</a>
+    </div>
+  </div>
+
+  <div class="hero-stat-row">
+    <div><b>5.0</b> · 72 reviews</div>
+    <div><b>15 min</b> walk in from the road</div>
+    <div><b>By reservation</b> · online or WhatsApp</div>
+  </div>
+</section>
+
+<section class="story reveal" id="story">
+  <div class="wrap story-grid">
+    <div class="story-lead">
+      <img class="story-photo" src="images/tea-pour.jpg" alt="Pouring mint tea at The Farmer's House">
+      <div class="eyebrow">Who we are</div>
+      <h2>This isn't a restaurant we built. It's a table we already had.</h2>
+    </div>
+    <div class="story-body">
+      <p>My name is Youssef. This is my family's farm, a short drive and a short hike outside Essaouira, tucked above a small waterfall where the sound of the water never really stops. Long before anyone came here for lunch, this is where we ate ourselves — whatever my mother had cooked that morning, whatever my father had pulled from the ground.</p>
+      <p>Now we set a few more places at the table. When you write to us, I'll walk you in myself — down past the fields, along the stream, to the falls — and by the time we sit down to eat, you'll understand why the food tastes the way it does here. There's no menu card, no rush, and usually no one else around but us.</p>
+      <p class="signature-line">Come hungry. Leave your schedule at the road.</p>
+    </div>
+  </div>
+</section>
+
+<section class="journey reveal" id="journey">
+  <div class="wrap">
+    <div class="eyebrow">Before the meal</div>
+    <h2>The walk is part of the menu.</h2>
+
+    <svg class="journey-map" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+      <path d="M40 250 C 200 250, 260 90, 460 90 S 720 220, 880 60" stroke="#e3c583" stroke-width="2.5" fill="none" stroke-dasharray="2 10" stroke-linecap="round"/>
+
+      <g>
+        <circle cx="40" cy="250" r="6" fill="#e3c583"/>
+        <text x="40" y="278" fill="#f3ead8" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE ROAD</text>
+        <text x="40" y="292" fill="#c7cdb2" font-family="Work Sans, sans-serif" font-size="10.5" text-anchor="middle">where we meet you</text>
+      </g>
+
+      <g>
+        <circle cx="460" cy="90" r="6" fill="#e3c583"/>
+        <text x="460" y="70" fill="#f3ead8" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE FALLS</text>
+        <text x="460" y="56" fill="#c7cdb2" font-family="Work Sans, sans-serif" font-size="10.5" text-anchor="middle">a swim, if you like</text>
+        <path d="M452 96 L468 96 L466 118 L454 118 Z" fill="#f3ead8" opacity="0.5"/>
+      </g>
+
+      <g>
+        <circle cx="680" cy="180" r="6" fill="#e3c583"/>
+        <text x="680" y="208" fill="#f3ead8" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE FARM</text>
+        <text x="680" y="222" fill="#c7cdb2" font-family="Work Sans, sans-serif" font-size="10.5" text-anchor="middle">lunch, at last</text>
+        <path d="M667 168 L680 156 L693 168 V186 H667 Z" fill="#f3ead8" opacity="0.5"/>
+      </g>
+
+      <g>
+        <circle cx="880" cy="60" r="6" fill="#e3c583"/>
+        <text x="880" y="38" fill="#f3ead8" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE DUNES</text>
+        <text x="880" y="24" fill="#c7cdb2" font-family="Work Sans, sans-serif" font-size="10.5" text-anchor="middle">sea in the distance</text>
+      </g>
+    </svg>
+
+    <p class="journey-caption">The road can be rough after rain, so we always plan the route with you over WhatsApp first. Most guests walk in from where the car stops, past the falls, then to the farmhouse — about 15 minutes at an easy pace.</p>
+  </div>
+</section>
+
+<section class="table-section reveal" id="table">
+  <div class="wrap">
+    <div class="table-head">
+      <div class="table-head-text">
+        <div class="eyebrow">What's cooking</div>
+        <h2>One table, one menu — whatever my mother picked up that morning.</h2>
+      </div>
+      <img class="table-photo" src="images/couscous.jpg" alt="Couscous with vegetables and chicken, served family-style at The Farmer's House">
+    </div>
+    <div class="courses">
+      <div class="course">
+        <div class="num">01</div>
+        <h3>Soup &amp; bread</h3>
+        <p>A warm harira-style soup, and bread baked that morning, seasoned with fennel and whatever herbs are ready in the garden.</p>
+      </div>
+      <div class="course">
+        <div class="num">02</div>
+        <h3>Salads &amp; dates</h3>
+        <p>A spread of small farm salads to start, and dates from the region while you wait.</p>
+      </div>
+      <div class="course">
+        <div class="num">03</div>
+        <h3>The main course</h3>
+        <p>Usually a slow-cooked tagine from the farm. If you've been fishing nearby and bring back your catch, my mother will cook that instead.</p>
+      </div>
+      <div class="course">
+        <div class="num">04</div>
+        <h3>Dessert &amp; tea</h3>
+        <p>Something sweet to finish, and Moroccan mint tea poured the traditional way, tall and slow.</p>
+      </div>
+    </div>
+    <p class="table-note">Vegetarian and plant-based meals are no problem — just let us know when you message. Portions are generous; nobody leaves hungry.</p>
+  </div>
+</section>
+
+<section class="reviews reveal">
+  <div class="wrap">
+    <div class="reviews-head">
+      <div>
+        <div class="eyebrow">In their words</div>
+        <h2>Guests who made the walk</h2>
+      </div>
+      <div class="rating-badge">
+        <div class="big">5.0</div>
+        <div>on Google · 72 reviews</div>
+      </div>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <p>They celebrated a family birthday here and were touched that the kitchen baked a cake on request, on top of the full farm meal — soup, salad, bread, dates, a main course, dessert and tea. The hike in and back past the waterfall and dunes made the whole afternoon feel like a small adventure.</p>
+        <div class="who">A GUEST, GOOGLE REVIEW</div>
+      </div>
+      <div class="review-card">
+        <p>What stayed with them wasn't just the food, which they rated highly, but their host's warmth — he even cooked fish they'd caught that morning alongside the regular spread, and spent the meal talking with them about everyday life in Morocco.</p>
+        <div class="who">A GUEST, GOOGLE REVIEW</div>
+      </div>
+      <div class="review-card">
+        <p>They described the family's welcome as genuine from the first message, and the short hike down to the falls before dinner as part of what made the evening feel special — followed by a meal cooked by Youssef's mother that they still think about.</p>
+        <div class="who">A GUEST, GOOGLE REVIEW</div>
+      </div>
+      <div class="review-card">
+        <p>Getting there took some effort after heavy rain, but they called it a hidden gem worth the trouble — the family's warmth, the walk to the waterfall, and the home-cooked meal added up to what they called one of their best moments in Morocco.</p>
+        <div class="who">A GUEST, GOOGLE REVIEW</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit reveal" id="reserve">
+  <div class="wrap visit-grid">
+    <div>
+      <div class="eyebrow">Plan your visit</div>
+      <h2>Reserve your table.</h2>
+      <div class="visit-details">
+        <div class="visit-row">
+          <div class="label">Where</div>
+          <div class="value">On our family farm, roughly 20 minutes outside Essaouira, above a small waterfall. We'll send you the exact route once you reserve.</div>
+        </div>
+        <div class="visit-row">
+          <div class="label">When</div>
+          <div class="value">Lunch, by reservation only — we cook for the guests we know are coming, nothing sits waiting.</div>
+        </div>
+        <div class="visit-row">
+          <div class="label">Good to know</div>
+          <div class="value">Comfortable shoes for the walk in. Bring a swimsuit if you fancy the falls before lunch.</div>
+        </div>
+      </div>
+
+      <form id="reserveForm" class="reserve-form">
+        <div class="form-row">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" required placeholder="Your full name">
+        </div>
+        <div class="form-row">
+          <label for="f-phone">WhatsApp / phone</label>
+          <input id="f-phone" name="phone" type="tel" required placeholder="+212 6 12 34 56 78">
+        </div>
+        <div class="form-row form-row-split">
+          <div>
+            <label for="f-date">Date</label>
+            <input id="f-date" name="date" type="date" required>
+          </div>
+          <div>
+            <label for="f-guests">Guests</label>
+            <input id="f-guests" name="guests" type="number" min="1" max="20" value="2" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="f-message">Anything we should know?</label>
+          <textarea id="f-message" name="message" rows="3" placeholder="Dietary needs, arrival time, questions..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;font-family:inherit;">Send reservation request →</button>
+        <p class="form-status" id="formStatus"></p>
+      </form>
+
+      <p style="margin-top:18px;font-size:13.5px;color:#5a4a38;">
+        Prefer to chat directly? <a href="https://wa.me/212656207161" target="_blank" rel="noopener" style="color:var(--sage-deep);text-decoration:underline;">Message us on WhatsApp</a> instead — <a href="+212656207161">+212 6 56 20 71 61</a>.
+      </p>
+    </div>
+    <iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=31.2612271,-9.7987122&z=15&output=embed"></iframe>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="year"></span> The Farmer's House, Essaouira</div>
+    <div style="display:flex;gap:20px;">
+      <a href="https://www.instagram.com/the_farmers_housse" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/212656207161" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ============================================================
+  // HERO BACKGROUND CAROUSEL
+  // Add more filenames here (put the actual photos in /images/)
+  // and they'll all rotate automatically, no other change needed.
+  // ============================================================
+  const heroImages = [
+    'images/hero-palm.jpg',
+    'images/dining-room.jpg',
+    'images/table-spread.jpg'
+  ];
+
+  const heroBg = document.getElementById('heroBg');
+  heroImages.forEach((src, i) => {
+    const layer = document.createElement('div');
+    layer.className = 'hero-bg-layer' + (i === 0 ? ' active' : '');
+    layer.style.backgroundImage = `url('${src}')`;
+    heroBg.appendChild(layer);
+  });
+
+  if (heroImages.length > 1) {
+    let heroIndex = 0;
+    const layers = heroBg.querySelectorAll('.hero-bg-layer');
+    setInterval(() => {
+      layers[heroIndex].classList.remove('active');
+      heroIndex = (heroIndex + 1) % layers.length;
+      layers[heroIndex].classList.add('active');
+    }, 5500);
+  }
+
+  // ============================================================
+  // RESERVATION FORM → GOOGLE SHEETS DASHBOARD
+  // ------------------------------------------------------------
+  // Replace the URL below with YOUR Google Apps Script Web App
+  // URL. Setup steps are in the message where this file was
+  // shared with you. Until you replace it, submissions will
+  // just show a friendly message but won't be saved anywhere.
+  // ============================================================
+  const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbz3IubMLsdv1wpo19tRuNipV5meoRz4nnc2HOhdQR4irWaBMhW2UQhUqctSVCmbIAJf/exec";
+
+  const form = document.getElementById('reserveForm');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+      name: form.name.value,
+      phone: form.phone.value,
+      date: form.date.value,
+      guests: form.guests.value,
+      message: form.message.value,
+      submittedAt: new Date().toISOString()
+    };
+
+    if (SHEET_ENDPOINT.includes("PASTE_YOUR")) {
+      status.textContent = "Reservation form isn't connected yet — see setup instructions.";
+      status.className = "form-status err";
+      return;
+    }
+
+    status.textContent = "Sending...";
+    status.className = "form-status";
+
+    try {
+      await fetch(SHEET_ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+      status.textContent = "Thank you! We'll confirm your table on WhatsApp shortly.";
+      status.className = "form-status ok";
+      form.reset();
+    } catch (err) {
+      status.textContent = "Something went wrong — please message us on WhatsApp instead.";
+      status.className = "form-status err";
+    }
+  });
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold: 0.15});
+  els.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
