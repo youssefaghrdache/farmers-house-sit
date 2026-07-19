@@ -137,21 +137,12 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    background:var(--walnut);
+    background:var(--walnut) url('sunset-palm.jpg') center 30%/cover no-repeat;
     color:var(--linen);
     overflow:hidden;
     min-height:620px;
     display:flex;flex-direction:column;justify-content:space-between;
   }
-  .hero-bg{
-    position:absolute;inset:0;z-index:0;
-  }
-  .hero-bg-layer{
-    position:absolute;inset:0;
-    background-size:cover;background-position:center 30%;background-repeat:no-repeat;
-    opacity:0;transition:opacity 1.6s ease-in-out;
-  }
-  .hero-bg-layer.active{opacity:1;}
   .hero::before{
     content:"";
     position:absolute;inset:0;
@@ -489,7 +480,6 @@
 </nav>
 
 <section class="hero">
-  <div class="hero-bg" id="heroBg"></div>
   <div class="hero-inner">
     <div class="eyebrow">A working farm · Essaouira countryside</div>
     <h1>Lunch is served after you've<br>walked to <em>the waterfall.</em></h1>
@@ -751,36 +741,6 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // ============================================================
-  // HERO BACKGROUND CAROUSEL
-  // Add more filenames here (put the actual photos in /images/)
-  // and they'll all rotate automatically, no other change needed.
-  // ============================================================
-  const heroImages = [
-    'sunset-palm.jpg',
-    'dunes.jpg',
-    'table-spread.jpg',
-    'waterfall-ai.jpg'
-  ];
-
-  const heroBg = document.getElementById('heroBg');
-  heroImages.forEach((src, i) => {
-    const layer = document.createElement('div');
-    layer.className = 'hero-bg-layer' + (i === 0 ? ' active' : '');
-    layer.style.backgroundImage = `url('${src}')`;
-    heroBg.appendChild(layer);
-  });
-
-  if (heroImages.length > 1) {
-    let heroIndex = 0;
-    const layers = heroBg.querySelectorAll('.hero-bg-layer');
-    setInterval(() => {
-      layers[heroIndex].classList.remove('active');
-      heroIndex = (heroIndex + 1) % layers.length;
-      layers[heroIndex].classList.add('active');
-    }, 5500);
-  }
 
   // ============================================================
   // RESERVATION FORM → GOOGLE SHEETS DASHBOARD
