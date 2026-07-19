@@ -1,9 +1,63 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Farmer's House — A Farm Table Above the Waterfall, Essaouira</title>
+<title>The Farmer's House — Farm Restaurant & Waterfall Walk Near Essaouira</title>
+
+<!-- Core SEO -->
+<meta name="description" content="A family-run farm restaurant near Essaouira, Morocco. Walk to a waterfall, then eat a home-cooked Moroccan lunch — tagine, fresh bread, mint tea. By reservation only. 5.0 stars, 72 Google reviews.">
+<meta name="keywords" content="restaurant Essaouira, farm restaurant Morocco, waterfall walk Essaouira, things to do Essaouira, authentic Moroccan lunch, family restaurant Essaouira, agritourism Morocco">
+<link rel="canonical" href="https://youssefaghrdache.github.io/farmers-house-sit/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph (Facebook, WhatsApp, Instagram link previews) -->
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="The Farmer's House — Farm Restaurant & Waterfall Walk Near Essaouira">
+<meta property="og:description" content="Walk to a waterfall, then eat a home-cooked Moroccan lunch on our family farm outside Essaouira. By reservation only. 5.0 stars, 72 Google reviews.">
+<meta property="og:image" content="https://youssefaghrdache.github.io/farmers-house-sit/couscous.jpg">
+<meta property="og:url" content="https://youssefaghrdache.github.io/farmers-house-sit/">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="The Farmer's House">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Farmer's House — Farm Restaurant & Waterfall Walk Near Essaouira">
+<meta name="twitter:description" content="Walk to a waterfall, then eat a home-cooked Moroccan lunch on our family farm outside Essaouira.">
+<meta name="twitter:image" content="https://youssefaghrdache.github.io/farmers-house-sit/couscous.jpg">
+
+<!-- Structured Data: helps Google show star rating, address, phone directly in search results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "The Farmer's House",
+  "image": "https://youssefaghrdache.github.io/farmers-house-sit/couscous.jpg",
+  "url": "https://youssefaghrdache.github.io/farmers-house-sit/",
+  "telephone": "+212656207161",
+  "servesCuisine": "Moroccan",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Essaouira",
+    "addressCountry": "MA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 31.2612271,
+    "longitude": -9.7987122
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "72"
+  },
+  "servesMeal": "Lunch",
+  "acceptsReservations": "True"
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -18,6 +72,8 @@
     --linen: #f3ead8;
     --linen-dim: #e9dcc0;
     --rust: #a1512e;
+    --maroon: #7a2332;
+    --maroon-deep: #5a1a25;
     --ink: #241a12;
     --serif: 'Fraunces', serif;
     --sans: 'Work Sans', sans-serif;
@@ -294,6 +350,7 @@
     text-align:right;font-family:var(--mono);color:var(--gold-soft);
   }
   .rating-badge .big{font-size:34px;font-family:var(--serif);color:var(--linen);}
+  .rating-badge{border-bottom:2px solid var(--maroon);padding-bottom:10px;}
   .review-grid{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:1px;background:rgba(243,234,216,.12);
@@ -372,6 +429,37 @@
   footer a{color:var(--gold-soft);text-decoration:none;}
 
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+
+  /* ---------- TRADITIONAL MOROCCAN TOUCHES ---------- */
+  .zellige-divider{
+    width:100%;height:22px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='22' viewBox='0 0 44 22'%3E%3Cg fill='none' stroke='%23c89b3c' stroke-width='1' opacity='0.55'%3E%3Cpath d='M22 2 L30 11 L22 20 L14 11 Z'/%3E%3Ccircle cx='0' cy='11' r='5.5'/%3E%3Ccircle cx='44' cy='11' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat:repeat-x;background-position:center;background-size:44px 22px;
+  }
+  .zellige-divider.on-dark{opacity:0.7;}
+
+  .corner-motif{
+    position:absolute;width:34px;height:34px;opacity:0.5;pointer-events:none;
+  }
+  .corner-motif svg{width:100%;height:100%;}
+  .corner-motif.tl{top:10px;left:10px;}
+  .corner-motif.tr{top:10px;right:10px;transform:scaleX(-1);}
+
+  .traditional-frame{
+    position:relative;
+    border:1px solid rgba(200,155,60,.4);
+    padding:3px;
+  }
+  .traditional-frame::before{
+    content:"";position:absolute;inset:6px;
+    border:1px solid rgba(200,155,60,.3);
+    pointer-events:none;
+  }
+
+  .maroon-tag{
+    display:inline-block;color:var(--maroon);font-family:var(--mono);
+    font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  }
   .reveal.in{opacity:1;transform:translateY(0);}
 </style>
 </head>
@@ -420,6 +508,8 @@
   </div>
 </section>
 
+<div class="zellige-divider"></div>
+
 <section class="story reveal" id="story">
   <div class="wrap story-grid">
     <div class="story-lead">
@@ -434,6 +524,8 @@
     </div>
   </div>
 </section>
+
+<div class="zellige-divider"></div>
 
 <section class="journey reveal" id="journey">
   <div class="wrap">
@@ -493,6 +585,8 @@
   </div>
 </section>
 
+<div class="zellige-divider"></div>
+
 <section class="table-section reveal" id="table">
   <div class="wrap">
     <div class="table-head">
@@ -500,7 +594,11 @@
         <div class="eyebrow">What's cooking</div>
         <h2>One table, one menu — whatever my mother picked up that morning.</h2>
       </div>
-      <img class="table-photo" src="couscous.jpg" alt="Couscous with vegetables and chicken, served family-style at The Farmer's House">
+      <div class="traditional-frame">
+        <div class="corner-motif tl"><svg viewBox="0 0 34 34"><path d="M2 2 L2 12 M2 2 L12 2" stroke="#c89b3c" stroke-width="1.5" fill="none"/><circle cx="2" cy="2" r="2.5" fill="#c89b3c"/></svg></div>
+        <div class="corner-motif tr"><svg viewBox="0 0 34 34"><path d="M2 2 L2 12 M2 2 L12 2" stroke="#c89b3c" stroke-width="1.5" fill="none"/><circle cx="2" cy="2" r="2.5" fill="#c89b3c"/></svg></div>
+        <img class="table-photo" src="couscous.jpg" alt="Couscous with vegetables and chicken, served family-style at The Farmer's House">
+      </div>
     </div>
     <div class="courses">
       <div class="course">
@@ -527,6 +625,8 @@
     <p class="table-note">Vegetarian and plant-based meals are no problem — just let us know when you message. Portions are generous; nobody leaves hungry.</p>
   </div>
 </section>
+
+<div class="zellige-divider"></div>
 
 <section class="reviews reveal">
   <div class="wrap">
@@ -560,6 +660,8 @@
     </div>
   </div>
 </section>
+
+<div class="zellige-divider"></div>
 
 <section class="visit reveal" id="reserve">
   <div class="wrap visit-grid">
@@ -638,7 +740,8 @@
   const heroImages = [
     'hero-palm.jpg',
     'dining-room.jpg',
-    'table-spread.jpg'
+    'table-spread.jpg',
+    'waterfall-ai.jpg'
   ];
 
   const heroBg = document.getElementById('heroBg');
