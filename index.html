@@ -137,11 +137,20 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    background:var(--walnut) url('waterfall-ai.jpg') center 45%/cover no-repeat;
+    background:var(--walnut);
     color:var(--linen);
     overflow:hidden;
     min-height:620px;
     display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .hero-bg-img{
+    position:absolute;inset:0;z-index:0;
+    background:url('waterfall-ai.jpg') center 45%/cover no-repeat;
+    animation:heroDrift 22s ease-in-out infinite alternate;
+  }
+  @keyframes heroDrift{
+    0%{transform:scale(1) translate(0,0);}
+    100%{transform:scale(1.12) translate(-1.5%,-1.5%);}
   }
   .hero::before{
     content:"";
@@ -480,6 +489,7 @@
 </nav>
 
 <section class="hero">
+  <div class="hero-bg-img"></div>
   <div class="hero-inner">
     <div class="eyebrow">A working farm · Essaouira countryside</div>
     
