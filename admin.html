@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — The Farmer's House</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     DESIGN SYSTEM — copied from index.html so this page matches
+     the public site exactly (same tokens, fonts, colors).
+     ============================================================ */
+  :root{
+    --walnut: #2b1f17;
+    --walnut-deep: #1c1410;
+    --gold: #c89b3c;
+    --gold-soft: #e3c583;
+    --sage: #6f7a52;
+    --sage-deep: #4d5638;
+    --linen: #f3ead8;
+    --linen-dim: #e9dcc0;
+    --rust: #a1512e;
+    --maroon: #7a2332;
+    --ink: #241a12;
+    --serif: 'Fraunces', serif;
+    --sans: 'Work Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--linen);color:var(--ink);font-family:var(--sans);
+    line-height:1.5;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--sage-deep);
+  }
+
+  /* ---------- PASSWORD GATE ---------- */
+  #gate{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:var(--walnut);padding:24px;
+  }
+  .gate-card{
+    background:var(--linen);padding:48px 40px;border-radius:4px;
+    max-width:360px;width:100%;text-align:center;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.5);
+  }
+  .gate-card h1{
+    font-family:var(--serif);font-weight:500;font-size:26px;margin:14px 0 6px;
+  }
+  .gate-card p{font-size:14px;color:#5a4a38;margin-bottom:22px;}
+  #gate input{
+    width:100%;padding:12px 14px;border:1px solid rgba(43,31,23,.25);
+    border-radius:3px;font-family:var(--sans);font-size:15px;margin-bottom:12px;
+  }
+  #gate button{
+    width:100%;padding:12px;border:none;border-radius:3px;
+    background:var(--gold);color:var(--walnut-deep);font-weight:600;
+    font-size:14.5px;cursor:pointer;transition:background .2s;
+  }
+  #gate button:hover{background:var(--gold-soft);}
+  #gate-error{
+    color:var(--maroon);font-size:13px;margin-top:10px;min-height:16px;
+  }
+
+  /* ---------- DASHBOARD SHELL ---------- */
+  #dashboard{display:none;}
+  header.top{
+    background:var(--walnut);color:var(--linen);padding:22px 0;
+  }
+  header.top .wrap{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  }
+  header.top h1{
+    font-family:var(--serif);font-weight:500;font-style:italic;font-size:22px;
+  }
+  header.top .eyebrow{color:var(--gold-soft);}
+  .refresh-btn{
+    background:var(--sage-deep);color:var(--linen);border:none;
+    padding:10px 18px;border-radius:3px;font-size:13.5px;cursor:pointer;
+    font-family:var(--sans);transition:background .2s;
+  }
+  .refresh-btn:hover{background:var(--rust);}
+
+  main{padding:32px 0 80px;}
+
+  /* ---------- STAT CARDS ---------- */
+  .stats{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:1px;background:rgba(43,31,23,.15);border:1px solid rgba(43,31,23,.15);
+    margin-bottom:32px;
+  }
+  .stat-card{background:var(--linen);padding:22px 20px;}
+  .stat-card .num{
+    font-family:var(--serif);font-size:32px;color:var(--walnut);
+  }
+  .stat-card .label{
+    font-family:var(--mono);font-size:11.5px;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--rust);margin-top:4px;
+  }
+
+  /* ---------- CONTROLS ---------- */
+  .controls{
+    display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;
+    align-items:center;
+  }
+  .controls input, .controls select{
+    padding:10px 12px;border:1px solid rgba(43,31,23,.25);
+    border-radius:3px;font-family:var(--sans);font-size:14px;background:#fff;
+  }
+  .controls input[type="text"]{flex:1;min-width:180px;}
+  .controls .count-note{
+    font-family:var(--mono);font-size:12px;color:#5a4a38;margin-left:auto;
+  }
+
+  /* ---------- TABLE ---------- */
+  .table-wrap{
+    overflow-x:auto;border:1px solid rgba(43,31,23,.15);border-radius:4px;
+    background:#fff;
+  }
+  table{width:100%;border-collapse:collapse;min-width:720px;}
+  th, td{
+    text-align:left;padding:13px 16px;font-size:14px;
+    border-bottom:1px solid rgba(43,31,23,.1);white-space:nowrap;
+  }
+  th{
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.06em;color:var(--sage-deep);background:var(--linen-dim);
+    cursor:pointer;user-select:none;
+  }
+  th:hover{color:var(--rust);}
+  td.msg{white-space:normal;max-width:260px;color:#5a4a38;}
+  tr:last-child td{border-bottom:none;}
+  tr.today-row{background:rgba(200,155,60,.12);}
+  .badge{
+    display:inline-block;font-family:var(--mono);font-size:10.5px;
+    padding:3px 8px;border-radius:20px;letter-spacing:.04em;
+  }
+  .badge.today{background:var(--gold);color:var(--walnut-deep);}
+  .badge.upcoming{background:var(--sage-deep);color:var(--linen);}
+  .badge.past{background:#ddd0b8;color:#5a4a38;}
+
+  .empty-state{
+    padding:60px 20px;text-align:center;color:#5a4a38;font-size:14.5px;
+  }
+
+  @media(max-width:640px){
+    .controls{flex-direction:column;align-items:stretch;}
+    .controls .count-note{margin-left:0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     PASSWORD GATE
+     Change ADMIN_PASSWORD below to update the password anytime.
+     ============================================================ -->
+<div id="gate">
+  <div class="gate-card">
+    <div class="eyebrow">The Farmer's House</div>
+    <h1>Admin Access</h1>
+    <p>Enter the password to view reservations.</p>
+    <input type="password" id="gate-password" placeholder="Password" autocomplete="off">
+    <button id="gate-submit">Enter</button>
+    <div id="gate-error"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     DASHBOARD (hidden until password is correct)
+     ============================================================ -->
+<div id="dashboard">
+  <header class="top">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">The Farmer's House</div>
+        <h1>Reservations Dashboard</h1>
+      </div>
+      <button class="refresh-btn" id="refreshBtn">↻ Refresh</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="stats">
+      <div class="stat-card">
+        <div class="num" id="statTotal">–</div>
+        <div class="label">Total reservations</div>
+      </div>
+      <div class="stat-card">
+        <div class="num" id="statToday">–</div>
+        <div class="label">Today</div>
+      </div>
+      <div class="stat-card">
+        <div class="num" id="statUpcoming">–</div>
+        <div class="label">Upcoming</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search by name, phone, or message...">
+      <select id="dateFilter">
+        <option value="all">All dates</option>
+        <option value="today">Today</option>
+        <option value="upcoming">Upcoming</option>
+        <option value="past">Past</option>
+      </select>
+      <select id="sortOrder">
+        <option value="date-asc">Reservation date ↑</option>
+        <option value="date-desc">Reservation date ↓</option>
+        <option value="submitted-desc">Newest submitted</option>
+        <option value="submitted-asc">Oldest submitted</option>
+      </select>
+      <div class="count-note" id="visibleCount"></div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="resTable">
+        <thead>
+          <tr>
+            <th data-sort="name">Name</th>
+            <th data-sort="phone">Phone</th>
+            <th data-sort="date">Reservation Date</th>
+            <th data-sort="guests">Guests</th>
+            <th>Status</th>
+            <th data-sort="submitted">Submitted</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+      <div class="empty-state" id="emptyState" style="display:none;">No reservations match your filters.</div>
+    </div>
+  </main>
+</div>
+
+<script>
+  // ============================================================
+  // 1) PASSWORD — change this string to update the admin password
+  // ============================================================
+  const ADMIN_PASSWORD = "farmhouse2026";
+
+  const gate = document.getElementById('gate');
+  const dashboard = document.getElementById('dashboard');
+  const gateInput = document.getElementById('gate-password');
+  const gateError = document.getElementById('gate-error');
+
+  function tryUnlock(){
+    if (gateInput.value === ADMIN_PASSWORD){
+      gate.style.display = 'none';
+      dashboard.style.display = 'block';
+      loadReservations();
+    } else {
+      gateError.textContent = 'Incorrect password.';
+    }
+  }
+  document.getElementById('gate-submit').addEventListener('click', tryUnlock);
+  gateInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryUnlock(); });
+
+  // ============================================================
+  // 2) DATA SOURCE — same Google Apps Script endpoint the public
+  //    booking form already posts to. This just reads (GET) from
+  //    it instead of writing (POST). Your Apps Script needs a
+  //    doGet() function added — see the setup notes provided
+  //    alongside this file.
+  // ============================================================
+  const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbz3IubMLsdv1wpo19tRuNipV5meoRz4nnc2HOhdQR4irWaBMhW2UQhUqctSVCmbIAJf/exec";
+
+  let allReservations = [];
+
+  async function loadReservations(){
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:#5a4a38;">Loading...</td></tr>';
+    try {
+      const res = await fetch(SHEET_ENDPOINT);
+      const data = await res.json();
+      allReservations = Array.isArray(data) ? data : [];
+      render();
+    } catch (err) {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:#7a2332;">Could not load reservations. Check the Apps Script endpoint (see setup notes).</td></tr>';
+    }
+  }
+
+  document.getElementById('refreshBtn').addEventListener('click', loadReservations);
+
+  // ============================================================
+  // 3) HELPERS
+  // ============================================================
+  function startOfToday(){
+    const d = new Date(); d.setHours(0,0,0,0); return d;
+  }
+
+  function dateStatus(dateStr){
+    if (!dateStr) return 'past';
+    const d = new Date(dateStr);
+    if (isNaN(d)) return 'past';
+    d.setHours(0,0,0,0);
+    const today = startOfToday();
+    if (d.getTime() === today.getTime()) return 'today';
+    if (d.getTime() > today.getTime()) return 'upcoming';
+    return 'past';
+  }
+
+  function fmtDate(dateStr){
+    if (!dateStr) return '—';
+    const d = new Date(dateStr);
+    if (isNaN(d)) return dateStr;
+    return d.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
+  }
+
+  function fmtSubmitted(dateStr){
+    if (!dateStr) return '—';
+    const d = new Date(dateStr);
+    if (isNaN(d)) return dateStr;
+    return d.toLocaleDateString('en-GB', { day:'2-digit', month:'short' }) + ' ' +
+           d.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
+  }
+
+  // ============================================================
+  // 4) RENDER — apply search, filter, sort, then draw the table
+  // ============================================================
+  function render(){
+    const search = document.getElementById('searchInput').value.trim().toLowerCase();
+    const dateFilter = document.getElementById('dateFilter').value;
+    const sortOrder = document.getElementById('sortOrder').value;
+
+    let rows = allReservations.filter(r => {
+      const matchesSearch = !search ||
+        (r.name || '').toLowerCase().includes(search) ||
+        (r.phone || '').toLowerCase().includes(search) ||
+        (r.message || '').toLowerCase().includes(search);
+      const status = dateStatus(r.date);
+      const matchesDate = dateFilter === 'all' || dateFilter === status;
+      return matchesSearch && matchesDate;
+    });
+
+    rows.sort((a, b) => {
+      if (sortOrder === 'date-asc') return new Date(a.date) - new Date(b.date);
+      if (sortOrder === 'date-desc') return new Date(b.date) - new Date(a.date);
+      if (sortOrder === 'submitted-desc') return new Date(b.submittedAt) - new Date(a.submittedAt);
+      if (sortOrder === 'submitted-asc') return new Date(a.submittedAt) - new Date(b.submittedAt);
+      return 0;
+    });
+
+    const tbody = document.getElementById('tableBody');
+    const emptyState = document.getElementById('emptyState');
+    tbody.innerHTML = '';
+
+    if (rows.length === 0){
+      emptyState.style.display = 'block';
+    } else {
+      emptyState.style.display = 'none';
+      rows.forEach(r => {
+        const status = dateStatus(r.date);
+        const tr = document.createElement('tr');
+        if (status === 'today') tr.classList.add('today-row');
+        tr.innerHTML = `
+          <td>${escapeHtml(r.name)}</td>
+          <td>${escapeHtml(r.phone)}</td>
+          <td>${fmtDate(r.date)}</td>
+          <td>${escapeHtml(r.guests)}</td>
+          <td><span class="badge ${status}">${status}</span></td>
+          <td>${fmtSubmitted(r.submittedAt)}</td>
+          <td class="msg">${escapeHtml(r.message) || '—'}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    document.getElementById('visibleCount').textContent = `${rows.length} shown`;
+
+    // Stats (always computed from the full set, not the filtered view)
+    document.getElementById('statTotal').textContent = allReservations.length;
+    document.getElementById('statToday').textContent = allReservations.filter(r => dateStatus(r.date) === 'today').length;
+    document.getElementById('statUpcoming').textContent = allReservations.filter(r => dateStatus(r.date) === 'upcoming').length;
+  }
+
+  function escapeHtml(str){
+    if (str === undefined || str === null) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  document.getElementById('searchInput').addEventListener('input', render);
+  document.getElementById('dateFilter').addEventListener('change', render);
+  document.getElementById('sortOrder').addEventListener('change', render);
+
+  // Sortable column headers
+  document.querySelectorAll('th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => {
+      const key = th.getAttribute('data-sort');
+      if (key === 'date') document.getElementById('sortOrder').value =
+        document.getElementById('sortOrder').value === 'date-asc' ? 'date-desc' : 'date-asc';
+      if (key === 'submitted') document.getElementById('sortOrder').value =
+        document.getElementById('sortOrder').value === 'submitted-desc' ? 'submitted-asc' : 'submitted-desc';
+      render();
+    });
+  });
+</script>
+
+</body>
+</html>
