@@ -62,18 +62,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --walnut: #2b1f17;
-    --walnut-deep: #1c1410;
-    --gold: #c89b3c;
-    --gold-soft: #e3c583;
-    --sage: #6f7a52;
-    --sage-deep: #4d5638;
-    --linen: #f3ead8;
-    --linen-dim: #e9dcc0;
-    --rust: #a1512e;
-    --maroon: #7a2332;
-    --maroon-deep: #5a1a25;
-    --ink: #241a12;
+    --walnut: #155263;
+    --walnut-deep: #0d3640;
+    --gold: #f0a202;
+    --gold-soft: #f7c948;
+    --sage: #c1442d;
+    --sage-deep: #a83226;
+    --linen: #fdf6e9;
+    --linen-dim: #f5e6c4;
+    --rust: #c1442d;
+    --maroon: #8a2a1f;
+    --maroon-deep: #6b1f16;
+    --ink: #1c2b2e;
     --serif: 'Fraunces', serif;
     --sans: 'Work Sans', sans-serif;
     --mono: 'JetBrains Mono', monospace;
@@ -155,7 +155,7 @@
   .hero::before{
     content:"";
     position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(28,20,16,.55) 0%, rgba(28,20,16,.35) 45%, rgba(28,20,16,.75) 78%, var(--walnut-deep) 100%);
+    background:linear-gradient(180deg, rgba(13,54,64,.55) 0%, rgba(13,54,64,.35) 45%, rgba(13,54,64,.75) 78%, var(--walnut-deep) 100%);
     z-index:1;
   }
   .hero-inner{
@@ -253,7 +253,7 @@
   }
   .journey::before{
     content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(26,32,17,.82) 0%, rgba(26,32,17,.9) 100%);
+    background:linear-gradient(180deg, rgba(13,54,64,.82) 0%, rgba(13,54,64,.9) 100%);
   }
   .journey .wrap{position:relative;z-index:1;}
   .journey .eyebrow{color:var(--gold-soft);}
@@ -333,6 +333,23 @@
     margin-top:36px;font-size:14px;color:#5a4a38;
     border-left:2px solid var(--gold);padding-left:16px;
     max-width:600px;
+  }
+  .local-products{
+    margin-top:1px;background:var(--walnut);color:var(--linen);
+    padding:26px 32px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 10px;
+  }
+  .local-products-label{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--gold-soft);margin-right:8px;
+  }
+  .local-products-list{
+    font-family:var(--serif);font-style:italic;font-size:16px;
+    display:flex;flex-wrap:wrap;gap:10px;color:var(--linen-dim);
+  }
+  .local-products-list span:nth-child(odd){color:var(--linen);}
+  @media(max-width:600px){
+    .local-products{padding:22px 24px;}
+    .local-products-label{width:100%;margin-right:0;}
   }
 
   /* ---------- REVIEWS ---------- */
@@ -488,7 +505,7 @@
 <nav>
   <div class="wrap">
     <div class="brand">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M4 21V11L12 4L20 11V21H14V15H10V21H4Z" stroke="#c89b3c" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 21V11L12 4L20 11V21H14V15H10V21H4Z" stroke="#f0a202" stroke-width="1.6" stroke-linejoin="round"/></svg>
       The Farmer's House
     </div>
     <div class="nav-links">
@@ -499,10 +516,10 @@
     </div>
     <div style="display:flex;align-items:center;gap:14px;">
       <a href="https://www.instagram.com/the_farmers_housse" target="_blank" rel="noopener" aria-label="Instagram" style="opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="#2b1f17" stroke-width="1.6"/><circle cx="12" cy="12" r="4.3" stroke="#2b1f17" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="#2b1f17"/></svg>
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="#155263" stroke-width="1.6"/><circle cx="12" cy="12" r="4.3" stroke="#155263" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.1" fill="#155263"/></svg>
       </a>
       <a href="https://wa.me/212656207161?text=Hi%2C%20I%27d%20like%20to%20reserve%20a%20table%20at%20The%20Farmer%27s%20House%20%F0%9F%8C%BF" target="_blank" rel="noopener" aria-label="WhatsApp" style="opacity:.8;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.8">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="#2b1f17"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.08-1.65-.1-.38-.11-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.44-1.08-2.74 0-1.3.68-1.94.92-2.2.24-.26.53-.33.7-.33h.5c.16 0 .38-.03.58.44.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.13.29-.26.44-.13.16-.27.35-.39.47-.13.13-.26.27-.11.53.15.26.67 1.1 1.44 1.79 1 .89 1.83 1.16 2.1 1.29.26.13.42.11.57-.07.16-.18.65-.76.83-1.02.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.44.2.5.31.07.11.07.65-.15 1.27z"/></svg>
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="#155263"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.08-1.65-.1-.38-.11-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.44-1.08-2.74 0-1.3.68-1.94.92-2.2.24-.26.53-.33.7-.33h.5c.16 0 .38-.03.58.44.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.13.29-.26.44-.13.16-.27.35-.39.47-.13.13-.26.27-.11.53.15.26.67 1.1 1.44 1.79 1 .89 1.83 1.16 2.1 1.29.26.13.42.11.57-.07.16-.18.65-.76.83-1.02.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.44.2.5.31.07.11.07.65-.15 1.27z"/></svg>
       </a>
       <a class="nav-cta" href="#reserve">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z"/></svg>
@@ -554,31 +571,31 @@
     <h2>The walk is part of the menu.</h2>
 
     <svg class="journey-map" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
-      <path d="M40 250 C 200 250, 260 90, 460 90 S 720 220, 880 60" stroke="#e3c583" stroke-width="2.5" fill="none" stroke-dasharray="2 10" stroke-linecap="round"/>
+      <path d="M40 250 C 200 250, 260 90, 460 90 S 720 220, 880 60" stroke="#f7c948" stroke-width="2.5" fill="none" stroke-dasharray="2 10" stroke-linecap="round"/>
 
       <g>
-        <circle cx="40" cy="250" r="6" fill="#e3c583"/>
-        <text x="40" y="278" fill="#f3ead8" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE ROAD</text>
+        <circle cx="40" cy="250" r="6" fill="#f7c948"/>
+        <text x="40" y="278" fill="#fdf6e9" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE ROAD</text>
         <text x="40" y="292" fill="#c7cdb2" font-family="Work Sans, sans-serif" font-size="10.5" text-anchor="middle">where we meet you</text>
       </g>
 
       <g>
-        <circle cx="460" cy="90" r="6" fill="#e3c583"/>
-        <text x="460" y="70" fill="#f3ead8" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE FALLS</text>
+        <circle cx="460" cy="90" r="6" fill="#f7c948"/>
+        <text x="460" y="70" fill="#fdf6e9" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE FALLS</text>
         <text x="460" y="56" fill="#c7cdb2" font-family="Work Sans, sans-serif" font-size="10.5" text-anchor="middle">a swim, if you like</text>
-        <path d="M452 96 L468 96 L466 118 L454 118 Z" fill="#f3ead8" opacity="0.5"/>
+        <path d="M452 96 L468 96 L466 118 L454 118 Z" fill="#fdf6e9" opacity="0.5"/>
       </g>
 
       <g>
-        <circle cx="680" cy="180" r="6" fill="#e3c583"/>
-        <text x="680" y="208" fill="#f3ead8" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE FARM</text>
+        <circle cx="680" cy="180" r="6" fill="#f7c948"/>
+        <text x="680" y="208" fill="#fdf6e9" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE FARM</text>
         <text x="680" y="222" fill="#c7cdb2" font-family="Work Sans, sans-serif" font-size="10.5" text-anchor="middle">the meal, at last</text>
-        <path d="M667 168 L680 156 L693 168 V186 H667 Z" fill="#f3ead8" opacity="0.5"/>
+        <path d="M667 168 L680 156 L693 168 V186 H667 Z" fill="#fdf6e9" opacity="0.5"/>
       </g>
 
       <g>
-        <circle cx="880" cy="60" r="6" fill="#e3c583"/>
-        <text x="880" y="38" fill="#f3ead8" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE DUNES</text>
+        <circle cx="880" cy="60" r="6" fill="#f7c948"/>
+        <text x="880" y="38" fill="#fdf6e9" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">THE DUNES</text>
         <text x="880" y="24" fill="#c7cdb2" font-family="Work Sans, sans-serif" font-size="10.5" text-anchor="middle">sea in the distance</text>
       </g>
     </svg>
@@ -617,8 +634,8 @@
         <p style="margin-top:14px;font-size:15.5px;color:#5a4a38;max-width:440px;">Once we know you're coming, my mother starts cooking — fresh, that day, just for you. No pre-made dishes sitting and waiting.</p>
       </div>
       <div class="traditional-frame">
-        <div class="corner-motif tl"><svg viewBox="0 0 34 34"><path d="M2 2 L2 12 M2 2 L12 2" stroke="#c89b3c" stroke-width="1.5" fill="none"/><circle cx="2" cy="2" r="2.5" fill="#c89b3c"/></svg></div>
-        <div class="corner-motif tr"><svg viewBox="0 0 34 34"><path d="M2 2 L2 12 M2 2 L12 2" stroke="#c89b3c" stroke-width="1.5" fill="none"/><circle cx="2" cy="2" r="2.5" fill="#c89b3c"/></svg></div>
+        <div class="corner-motif tl"><svg viewBox="0 0 34 34"><path d="M2 2 L2 12 M2 2 L12 2" stroke="#f0a202" stroke-width="1.5" fill="none"/><circle cx="2" cy="2" r="2.5" fill="#f0a202"/></svg></div>
+        <div class="corner-motif tr"><svg viewBox="0 0 34 34"><path d="M2 2 L2 12 M2 2 L12 2" stroke="#f0a202" stroke-width="1.5" fill="none"/><circle cx="2" cy="2" r="2.5" fill="#f0a202"/></svg></div>
         <img class="table-photo" src="couscous.jpg" alt="Couscous with vegetables and chicken, served family-style at The Farmer's House">
       </div>
     </div>
@@ -682,10 +699,15 @@
         <h3>Mint Tea</h3>
         <p>Fresh Moroccan mint tea, poured the traditional way, tall and slow — served at the end of every meal.</p>
       </div>
-      <div class="course">
-        <div class="num">11</div>
-        <h3>Local Farm Products</h3>
-        <p>Amlou, honey, argan oil, olive oil, and butter — all made on the farm, part of the table at breakfast, lunch, or dinner alike.</p>
+    </div>
+    <div class="local-products">
+      <div class="local-products-label">From our farm, on every table</div>
+      <div class="local-products-list">
+        <span>Amlou</span><span>·</span>
+        <span>Honey</span><span>·</span>
+        <span>Argan Oil</span><span>·</span>
+        <span>Olive Oil</span><span>·</span>
+        <span>Butter</span>
       </div>
     </div>
     <p class="table-note">Served at breakfast, lunch, or dinner — same table, same farm-fresh ingredients. Vegetarian and plant-based meals are no problem, just let us know when you message. Portions are generous; nobody leaves hungry.</p>
